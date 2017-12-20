@@ -2,7 +2,8 @@
 
   require_once("config.php");
 
-  /*$sql = new Banco();
+  /*FAZENDO CONSULTA
+  $sql = new Banco();
 
   $sql->query("UPDATE CLIENTE SET CNH = B WHERE CODCLI = 1");
 
@@ -10,9 +11,18 @@
 
   echo json_encode($select);*/
 
+/*BUSCANDO UM USUARIO
   $user = new Cliente();
 
   $user->carregarPorCliente(1);
 
-  echo $user;
+  echo $user;*/
+
+  //BUSCANDO LISTA DE USUARIOS
+  //$lista = Cliente::getLista();
+  //echo json_encode($lista);
+
+  $busca Cliente::busca("r");
+
+  echo json_encode($busca);
  ?>
