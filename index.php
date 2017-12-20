@@ -22,7 +22,7 @@
   //$lista = Cliente::getLista();
   //echo json_encode($lista);
 
-  $busca Cliente::busca("r");
+  $busca = Cliente::busca("r");
 
   echo json_encode($busca);
  ?>
