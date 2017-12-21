@@ -84,7 +84,7 @@
 
         $this->setCodCli($row['CODCLI']);
         $this->setNome($row['NOME']);
-        $this->setTELEFONE($row['TELEFONE']);
+        $this->setTelefone($row['TELEFONE']);
         $this->setEndereco($row['ENDERECO']);
         $this->setTipoCli($row['TIPOCLI']);
         $this->setDataCadastro(new DateTime($row['DATACADASTRO']));
@@ -92,6 +92,24 @@
 
       }
     }
+
+    public static function lista(){
+
+      $sql = new Banco();
+
+      return $sql->select("SELECT * FROM CLIENTE ORDER BY CODCLI");
+
+    }
+
+    public static function busca($letra){
+
+      $sql = new Banco();
+
+      return $sql->select("SELECT * FROM CLIENTE WHERE NOME LIKE :NOME ORDER BY NOME", array(
+        ':NOME'=>'%'.$letra.'%'
+      ));
+    }
+
     // FUNCAO PRA MOSTRAR NA TELA
     public function __toString(){
 
@@ -101,11 +119,8 @@
         "TELEFONE"=>$this->getTelefone(),
         "ENDERECO"=>$this->getEndereco(),
         "TIPOCLI"=>$this->getTipoCli(),
-        "DATACADASTRO"=>$this->getDataCadastro()->format("d/m/Y H:i:s")
+        "DATACADASTRO"=>$this->getDataCadastro()->format("d/m/Y")
       ));
     }
-
-
   }
-
  ?>
