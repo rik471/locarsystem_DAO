@@ -2,13 +2,10 @@
 
   require_once("config.php");
 
-  /*FAZENDO CONSULTA
-  $sql = new Banco();
-
+  //FAZENDO CONSULTA
+  /*$sql = new Banco();
   $sql->query("UPDATE CLIENTE SET CNH = B WHERE CODCLI = 1");
-
   $select = $sql->select("SELECT * FROM locarsystem.CLIENTE");
-
   echo json_encode($select);*/
 
 /*BUSCANDO UM USUARIO
@@ -19,8 +16,10 @@
   echo $user;*/
 
   //BUSCANDO LISTA DE USUARIOS
-  //$lista = Cliente::getLista();
-  //echo json_encode($lista);
+  $lista = Cliente::lista();
+  echo json_encode($lista);
+
+//busca por letras e silabas
 
   $busca = Cliente::busca("r");
 
