@@ -171,15 +171,34 @@
 
        $sql = new Banco();
 
-       $sql->query("UPDATE CLIENTE SET LOGIN = :LOGIN, SENHA = :SENHA WHERE CODCLI = :ID", array(
+       $results = $sql->query("UPDATE CLIENTE SET LOGIN = :LOGIN, SENHA = :SENHA WHERE CODCLI = :CODCLI", array(
          ":LOGIN"=>$this->getLogin(),
          ":SENHA"=>$this->getSenha(),
-         ":ID"=>$this->getCodCli()
+         ":CODCLI"=>$this->getCodCli()
        ));
        if (count($results) > 0){
          $this->setDados($results[0]);
        }
     }
+
+    //DELETE
+    public function delete(){
+
+      $sql = new Banco();
+
+      $sql->query("DELETE FROM CLIENTE WHERE CODCLI = :CODCLI", array(
+        ":CODCLI"=>$this->getCodCli()
+      ));
+      $this->setCodCli(0);
+      $this->setLogin("");
+      $this->setSenha("");
+      $this->setDataCadastro(new DateTime());
+
+      //if (count($results) > 0){
+        //$this->setDados($results[0]);
+      //}
+    }
+
 
     //NOVO USUARIO PASSANDO LOGIN E SENHA NA CLASSE Cliente
     public function __construct($login = "", $senha = ""){
@@ -203,7 +222,7 @@
       foreach ($dados as &$row) {
           $row['ENDERECO'] = utf8_encode($row['ENDERECO']);
       }
-          return $dados;
+      return $dados;
 
     }
 

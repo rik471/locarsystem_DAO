@@ -24,8 +24,8 @@
   echo json_encode($listar);*/
 
   //busca por letras e silabas
-  $busca = Cliente::busca("ri");
-  echo json_encode($busca);
+  //$busca = Cliente::busca("ri");
+  //echo json_encode($busca);
 
   //AUTENTICANDO LOGIN E SENHA
   //$sql = new Cliente();
@@ -45,8 +45,14 @@
   //echo $novo;
 
   //UPDATE credenciais de usuario
-  /*$atualizar = new Cliente();
-  $atualizar->carregarPorCliente(1);
-  $atualizar->update("Rick880", "rickvei");
-  echo $atualizar;*/
+  //$atualizar = new Cliente();
+  //$atualizar->carregarPorCliente(1);
+  //$atualizar->update("Rick880", "rickvei");
+  //echo $atualizar;
+
+  //DELETE usuario
+  $delete = new Cliente();
+  $delete->carregarPorCliente(14);
+  $delete->delete();
+  echo $delete;
  ?>
