@@ -114,10 +114,10 @@
 
       $sql = new Banco();
 
-      $results = $sql->select("SELECT * FROM locarsystem.CLIENTE ORDER BY LOGIN");
-      if (count($result) > 0) {
+      return $sql->select("SELECT * FROM locarsystem.CLIENTE ORDER BY LOGIN");
+      /*if (count($result) > 0) {
           $this->setDados($results[0]);
-      }
+      }*/
     }
 
     //FUNÇÃO PARA BUSCAR USUARIO POR LETRAS E PALAVRAS
@@ -125,10 +125,10 @@
 
       $sql = new Banco();
 
-      $results = $sql->select("SELECT * FROM locarsystem.CLIENTE WHERE NOME LIKE :NOME ORDER BY NOME", array(
+      return $sql->select("SELECT * FROM locarsystem.CLIENTE WHERE NOME LIKE :NOME ORDER BY NOME", array(
         ':NOME'=>'%'.$letra.'%'
       ));
-          $this->setDados($results[0]);
+          //$this->setDados($results[0]);
     }
 
 
@@ -171,14 +171,14 @@
 
        $sql = new Banco();
 
-       $results = $sql->query("UPDATE CLIENTE SET LOGIN = :LOGIN, SENHA = :SENHA WHERE CODCLI = :CODCLI", array(
+       return $sql->query("UPDATE locarsystem.CLIENTE SET LOGIN = :LOGIN, SENHA = :SENHA WHERE CODCLI = :CODCLI", array(
          ":LOGIN"=>$this->getLogin(),
          ":SENHA"=>$this->getSenha(),
          ":CODCLI"=>$this->getCodCli()
        ));
-       if (count($results) > 0){
+       /*if (count($results) > 0){
          $this->setDados($results[0]);
-       }
+       }*/
     }
 
     //DELETE
@@ -186,7 +186,7 @@
 
       $sql = new Banco();
 
-      $sql->query("DELETE FROM CLIENTE WHERE CODCLI = :CODCLI", array(
+      $sql->query("DELETE FROM locarsystem.CLIENTE WHERE CODCLI = :CODCLI", array(
         ":CODCLI"=>$this->getCodCli()
       ));
       $this->setCodCli(0);
